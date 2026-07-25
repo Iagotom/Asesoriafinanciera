@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Asesoría Financiera | Planifica, invierte y decide con criterio</title>
-  <meta name="description" content="Asesoría financiera independiente para particulares y autónomos: diagnóstico, plan financiero personal, estrategia de inversión y acompañamiento continuo.">
+  <title>IT Asesor Financiero | Planifica, invierte y decide con criterio</title>
+  <meta name="description" content="Asesor financiero independiente para particulares y autónomos: diagnóstico, plan financiero personal, estrategia de inversión y acompañamiento continuo.">
   <meta name="theme-color" content="#6E1D2B">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
   <script>document.documentElement.classList.add("js");</script>
-  <meta property="og:title" content="Asesoría Financiera | Planifica, invierte y decide con criterio">
-  <meta property="og:description" content="Asesoría financiera independiente: diagnóstico, plan financiero, estrategia de inversión y acompañamiento.">
+  <meta property="og:title" content="IT Asesor Financiero | Planifica, invierte y decide con criterio">
+  <meta property="og:description" content="Asesor financiero independiente: diagnóstico, plan financiero, estrategia de inversión y acompañamiento.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
 </head>
@@ -20,9 +20,9 @@
   <header class="site-header" id="header">
     <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <span class="brand-mark" aria-hidden="true">AF</span>
+        <span class="brand-mark" aria-hidden="true">IT</span>
         <span class="brand-text">
-          <strong>Asesoría Financiera</strong>
+          <strong>Asesor financiero</strong>
           <small>Planificación &amp; inversión</small>
         </span>
       </a>
@@ -52,7 +52,7 @@
     <section class="hero" id="inicio">
       <div class="container hero-inner">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Asesoría financiera independiente</p>
+          <p class="eyebrow">Asesor financiero independiente</p>
           <h1>Tu dinero, con un plan detrás.</h1>
           <p class="lead">
             Ordenamos tus finanzas, definimos objetivos realistas y construimos una estrategia
@@ -68,7 +68,7 @@
           <ul class="hero-points">
             <li>Primera llamada de 30 min sin coste</li>
             <li>Honorarios fijos y transparentes</li>
-            <li>100 % online o presencial</li>
+            <li>100 % online</li>
           </ul>
         </div>
 
@@ -262,8 +262,8 @@
             <p>No. Yo asesoro y tú ejecutas, siempre desde tus propias cuentas. En ningún momento tengo acceso ni disponibilidad sobre tus fondos.</p>
           </details>
           <details>
-            <summary>¿Las sesiones son online o presenciales?</summary>
-            <p>Como prefieras. La mayoría de clientes trabaja por videollamada, pero puedo atender presencialmente si te encaja mejor.</p>
+            <summary>¿Cómo son las sesiones?</summary>
+            <p>Trabajo 100 % online, por videollamada. Así podemos coincidir con más flexibilidad de horario, compartir pantalla para revisar tus números y quedarnos con la grabación o el resumen por escrito si te resulta útil.</p>
           </details>
           <details>
             <summary>¿Qué documentación tengo que preparar?</summary>
@@ -335,6 +335,23 @@
             </div>
 
             <div class="field">
+              <label for="origen">¿Cómo conociste mis servicios?</label>
+              <select id="origen" name="origen">
+                <option value="">Selecciona una opción…</option>
+                <option>Instagram</option>
+                <option>TikTok</option>
+                <option>YouTube</option>
+                <option>LinkedIn</option>
+                <option>Búsqueda en Google</option>
+                <option>Recomendación de un conocido</option>
+                <option>Podcast o entrevista</option>
+                <option>Newsletter o email</option>
+                <option>Evento o charla</option>
+                <option>Otro</option>
+              </select>
+            </div>
+
+            <div class="field">
               <label for="mensaje">Cuéntame tu situación <span aria-hidden="true">*</span></label>
               <textarea id="mensaje" name="mensaje" rows="5" required
                 placeholder="Por ejemplo: quiero ordenar mis finanzas y empezar a invertir a largo plazo, pero no sé por dónde empezar."></textarea>
@@ -344,7 +361,9 @@
             <div class="field field-check">
               <label class="check">
                 <input type="checkbox" id="privacidad" name="privacidad" required>
-                <span>He leído y acepto la <a href="#aviso-legal">política de privacidad</a> y el tratamiento de mis datos para responder a esta solicitud. <span aria-hidden="true">*</span></span>
+                <span>He leído y acepto la
+                  <button type="button" class="link-btn" data-open-policy>política de tratamiento de datos</button>
+                  y el uso de mis datos para responder a esta solicitud. <span aria-hidden="true">*</span></span>
               </label>
               <p class="error" data-error-for="privacidad" role="alert"></p>
             </div>
@@ -355,21 +374,12 @@
 
           <aside class="contact-side reveal">
             <div class="contact-block">
-              <h3>Contacto directo</h3>
-              <ul class="contact-list">
-                <li>
-                  <span class="contact-label">Email</span>
-                  <a id="contactEmail" href="#">—</a>
-                </li>
-                <li>
-                  <span class="contact-label">Teléfono</span>
-                  <a id="contactPhone" href="#">—</a>
-                </li>
-                <li>
-                  <span class="contact-label">WhatsApp</span>
-                  <a href="#" data-whatsapp="Hola, me gustaría informarme sobre tus servicios de asesoría financiera.">Abrir conversación</a>
-                </li>
-              </ul>
+              <h3>Cómo funciona</h3>
+              <ol class="contact-steps">
+                <li>Envías el formulario con tu situación.</li>
+                <li>Te respondo en menos de 24 h laborables.</li>
+                <li>Agendamos la llamada gratuita de 30 minutos.</li>
+              </ol>
             </div>
 
             <div class="contact-block">
@@ -394,8 +404,8 @@
   <footer class="site-footer" id="aviso-legal">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark" aria-hidden="true">AF</span>
-        <p><strong>Asesoría Financiera</strong><br>Planificación patrimonial y estrategia de inversión.</p>
+        <span class="brand-mark" aria-hidden="true">IT</span>
+        <p><strong>IT Asesor Financiero</strong><br>Planificación patrimonial y estrategia de inversión.</p>
       </div>
 
       <nav class="footer-nav" aria-label="Enlaces del pie">
@@ -403,6 +413,7 @@
         <a href="#proceso">Cómo trabajo</a>
         <a href="#faq">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>
+        <button type="button" class="link-btn footer-policy" data-open-policy>Política de tratamiento de datos</button>
       </nav>
 
       <div class="footer-legal">
@@ -414,15 +425,146 @@
           no garantizan rentabilidades futuras.
         </p>
         <p>
-          Los datos personales facilitados a través del formulario se tratan con la única
-          finalidad de atender tu solicitud y no se ceden a terceros. Puedes ejercer tus
-          derechos de acceso, rectificación y supresión escribiendo a la dirección de contacto.
+          <strong>Protección de datos.</strong> Los datos facilitados a través del
+          formulario se tratan con la única finalidad de atender tu solicitud y no se
+          ceden a terceros con fines comerciales. Consulta el detalle completo en la
+          <button type="button" class="link-btn" data-open-policy>política de tratamiento de datos</button>.
         </p>
       </div>
 
-      <p class="footer-copy">© <span id="year">2026</span> Asesoría Financiera. Todos los derechos reservados.</p>
+      <p class="footer-copy">© <span id="year">2026</span> IT Asesor Financiero. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <!-- POLÍTICA DE TRATAMIENTO DE DATOS -->
+  <dialog class="modal" id="policyModal" aria-labelledby="policyTitle">
+    <article class="modal-inner">
+      <header class="modal-head">
+        <h2 id="policyTitle">Política de tratamiento de datos</h2>
+        <button type="button" class="modal-close" data-close-policy aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </header>
+
+      <div class="modal-body">
+        <p class="modal-meta">Última actualización: julio de 2026</p>
+
+        <p>
+          Esta política explica, en lenguaje claro, qué datos recojo cuando rellenas el
+          formulario de contacto, para qué los uso, cuánto tiempo los conservo y qué
+          puedes exigirme en cualquier momento. Se rige por el Reglamento (UE) 2016/679
+          (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
+        </p>
+
+        <h3>1. Quién es el responsable</h3>
+        <p>
+          El responsable del tratamiento es <strong>[Nombre y apellidos]</strong>,
+          con NIF <strong>[NIF]</strong>, que presta servicios de asesoramiento
+          financiero por cuenta propia. Puedes dirigirte a mí para cualquier cuestión
+          sobre tus datos en <strong>[email de contacto]</strong>.
+        </p>
+
+        <h3>2. Qué datos recojo</h3>
+        <p>Únicamente los que tú me facilitas en el formulario:</p>
+        <ul>
+          <li>Nombre y apellidos.</li>
+          <li>Dirección de correo electrónico.</li>
+          <li>Teléfono, si decides indicarlo (es un campo opcional).</li>
+          <li>El servicio que te interesa y tu vía de contacto preferida.</li>
+          <li>Cómo conociste mis servicios, si decides indicarlo.</li>
+          <li>El contenido del mensaje que escribas.</li>
+        </ul>
+        <p>
+          No uso cookies de analítica ni de publicidad, no hay rastreadores de terceros
+          y no elaboro perfiles automatizados con tus datos.
+        </p>
+
+        <h3>3. Para qué los uso</h3>
+        <p>
+          Con una única finalidad: <strong>leer tu solicitud y responderte</strong>,
+          incluyendo la preparación y el seguimiento de la primera llamada informativa.
+          No los uso para enviarte comunicaciones comerciales salvo que me lo pidas
+          expresamente y por separado.
+        </p>
+
+        <h3>4. Con qué base legal</h3>
+        <p>
+          Tu <strong>consentimiento</strong>, que otorgas al marcar la casilla y enviar
+          el formulario (art. 6.1.a RGPD). Si después decidimos trabajar juntos, el
+          tratamiento pasará a basarse en la <strong>ejecución del contrato</strong> de
+          prestación de servicios (art. 6.1.b RGPD) y en el cumplimiento de mis
+          obligaciones legales, contables y fiscales (art. 6.1.c RGPD).
+        </p>
+
+        <h3>5. Cuánto tiempo los conservo</h3>
+        <ul>
+          <li>
+            <strong>Si no llegamos a trabajar juntos:</strong> conservo tu solicitud un
+            máximo de <strong>12 meses</strong> desde el último contacto, y después la
+            elimino.
+          </li>
+          <li>
+            <strong>Si llegamos a un acuerdo:</strong> conservo la documentación durante
+            la relación profesional y, una vez terminada, el tiempo que exija la
+            normativa fiscal y de prevención del blanqueo de capitales.
+          </li>
+        </ul>
+
+        <h3>6. Quién más puede verlos</h3>
+        <p>
+          <strong>No vendo, cedo ni comparto tus datos con terceros</strong> con fines
+          comerciales. Solo acceden a ellos los proveedores tecnológicos que necesito
+          para funcionar —el servicio de correo electrónico, el proveedor que gestiona
+          el envío del formulario y, si procede, la herramienta de videollamada—,
+          siempre como encargados del tratamiento y con las garantías del RGPD. Si
+          decides escribirme por WhatsApp, la conversación se rige además por la
+          política de privacidad de esa plataforma.
+        </p>
+
+        <h3>7. Tus derechos</h3>
+        <p>Puedes ejercer en cualquier momento y de forma gratuita tu derecho a:</p>
+        <ul>
+          <li><strong>Acceder</strong> a los datos que tengo sobre ti.</li>
+          <li><strong>Rectificar</strong> los que sean inexactos.</li>
+          <li><strong>Suprimir</strong> los datos («derecho al olvido»).</li>
+          <li><strong>Limitar</strong> u <strong>oponerte</strong> al tratamiento.</li>
+          <li><strong>Portar</strong> tus datos a otro responsable.</li>
+          <li><strong>Retirar tu consentimiento</strong> en cualquier momento, sin que ello afecte a la licitud del tratamiento anterior.</li>
+        </ul>
+        <p>
+          Basta con escribirme a <strong>[email de contacto]</strong> indicando qué
+          derecho quieres ejercer. Te responderé en el plazo máximo de un mes. Si
+          consideras que no he atendido tu solicitud correctamente, puedes reclamar ante
+          la <strong>Agencia Española de Protección de Datos</strong> (www.aepd.es).
+        </p>
+
+        <h3>8. Seguridad y confidencialidad</h3>
+        <p>
+          Trato tu información con estricta confidencialidad y aplico medidas técnicas y
+          organizativas razonables para protegerla: acceso restringido, contraseñas
+          robustas con doble factor y conexiones cifradas. Ningún dato de tu solicitud
+          se publica ni se comparte fuera de lo descrito en esta política.
+        </p>
+
+        <h3>9. Menores de edad</h3>
+        <p>
+          Los servicios están dirigidos a personas mayores de 18 años. No recojo
+          conscientemente datos de menores a través de este formulario.
+        </p>
+
+        <h3>10. Cambios en esta política</h3>
+        <p>
+          Si modifico esta política, actualizaré la fecha del encabezado. Los cambios
+          relevantes no se aplicarán con carácter retroactivo a datos ya recogidos sin
+          informarte previamente.
+        </p>
+      </div>
+
+      <footer class="modal-foot">
+        <button type="button" class="btn btn-primary" data-close-policy>Entendido</button>
+      </footer>
+    </article>
+  </dialog>
 
   <a class="fab" href="#" data-whatsapp="Hola, me gustaría informarme sobre tus servicios de asesoría financiera." aria-label="Escribir por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.02c-.25.7-1.44 1.34-1.98 1.39-.54.05-1.05.24-3.53-.74-2.99-1.18-4.86-4.28-5-4.48-.15-.2-1.19-1.59-1.19-3.03 0-1.44.75-2.15 1.02-2.44.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.19.01.44-.07.69.52.25.6.86 2.09.94 2.24.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.08.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2 .96.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>

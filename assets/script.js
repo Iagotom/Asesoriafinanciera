@@ -10,19 +10,6 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Datos de contacto ---------- */
-  var emailLink = document.getElementById("contactEmail");
-  if (emailLink && CFG.email) {
-    emailLink.textContent = CFG.email;
-    emailLink.href = "mailto:" + CFG.email;
-  }
-
-  var phoneLink = document.getElementById("contactPhone");
-  if (phoneLink && CFG.telefono) {
-    phoneLink.textContent = CFG.telefono;
-    phoneLink.href = "tel:" + (CFG.telefonoLink || CFG.telefono).replace(/\s/g, "");
-  }
-
   /* ---------- Enlaces de WhatsApp ---------- */
   function whatsappUrl(mensaje) {
     return "https://wa.me/" + (CFG.whatsapp || "") +
@@ -34,6 +21,51 @@
     el.target = "_blank";
     el.rel = "noopener noreferrer";
   });
+
+  /* ---------- Política de tratamiento de datos (modal) ---------- */
+  var policy = document.getElementById("policyModal");
+
+  if (policy) {
+    var ultimoFoco = null;
+
+    var abrirPolitica = function () {
+      ultimoFoco = document.activeElement;
+      if (typeof policy.showModal === "function") {
+        policy.showModal();
+      } else {
+        policy.setAttribute("open", "");
+      }
+      document.body.classList.add("modal-open");
+      var cerrar = policy.querySelector("[data-close-policy]");
+      if (cerrar) cerrar.focus();
+    };
+
+    var cerrarPolitica = function () {
+      if (typeof policy.close === "function" && policy.open) {
+        policy.close();
+      } else {
+        policy.removeAttribute("open");
+      }
+    };
+
+    document.querySelectorAll("[data-open-policy]").forEach(function (btn) {
+      btn.addEventListener("click", abrirPolitica);
+    });
+
+    policy.querySelectorAll("[data-close-policy]").forEach(function (btn) {
+      btn.addEventListener("click", cerrarPolitica);
+    });
+
+    /* Clic en el fondo oscuro: cerrar. */
+    policy.addEventListener("click", function (e) {
+      if (e.target === policy) cerrarPolitica();
+    });
+
+    policy.addEventListener("close", function () {
+      document.body.classList.remove("modal-open");
+      if (ultimoFoco && typeof ultimoFoco.focus === "function") ultimoFoco.focus();
+    });
+  }
 
   /* ---------- Menú móvil ---------- */
   var nav = document.getElementById("nav");
@@ -211,6 +243,7 @@
         telefono: document.getElementById("telefono").value.trim() || "No indicado",
         servicio: document.getElementById("servicio").value,
         preferencia: document.getElementById("contacto-pref").value,
+        origen: document.getElementById("origen").value || "No indicado",
         mensaje: document.getElementById("mensaje").value.trim()
       };
 
@@ -221,7 +254,8 @@
           "Email: " + datos.email + "\n" +
           "Teléfono: " + datos.telefono + "\n" +
           "Servicio de interés: " + datos.servicio + "\n" +
-          "Prefiere contacto por: " + datos.preferencia + "\n\n" +
+          "Prefiere contacto por: " + datos.preferencia + "\n" +
+          "Cómo conoció los servicios: " + datos.origen + "\n\n" +
           "Mensaje:\n" + datos.mensaje;
 
         var asunto = "Solicitud de " + datos.servicio + " — " + datos.nombre;
@@ -231,7 +265,7 @@
           "&body=" + encodeURIComponent(cuerpo);
 
         setStatus("Se abrirá tu programa de correo con la solicitud lista para enviar. " +
-                  "Si no ocurre nada, escríbeme a " + (CFG.email || "") + ".", "ok");
+                  "Si no ocurre nada, escríbeme por WhatsApp con el botón verde.", "ok");
         return;
       }
 
@@ -253,8 +287,8 @@
           setStatus("¡Solicitud enviada! Te responderé en menos de 24 h laborables.", "ok");
         })
         .catch(function () {
-          setStatus("No he podido enviar el formulario. Escríbeme directamente a " +
-                    (CFG.email || "") + " o por WhatsApp.", "error");
+          setStatus("No he podido enviar el formulario. Inténtalo de nuevo en unos " +
+                    "minutos o escríbeme por WhatsApp con el botón verde.", "error");
         })
         .finally(function () {
           submitBtn.disabled = false;

@@ -1,4 +1,4 @@
-# Asesoría Financiera — web de servicios
+# IT Asesor Financiero — web de servicios
 
 Web estática de una página para presentar y **contratar servicios de asesoría
 financiera**. Sin dependencias, sin build: HTML, CSS y JavaScript planos.
@@ -6,12 +6,24 @@ financiera**. Sin dependencias, sin build: HTML, CSS y JavaScript planos.
 ## Estructura
 
 ```
-index.html            Toda la página (hero, servicios, proceso, sobre mí, FAQ, contacto)
-assets/styles.css     Estilos y paleta de marca
-assets/config.js      ← DATOS DE CONTACTO (edita solo esto)
-assets/script.js      Menú, validación del formulario, WhatsApp, animaciones
-assets/favicon.svg    Icono de pestaña
+index.html                 Toda la página (hero, servicios, proceso, sobre mí, FAQ, contacto)
+assets/styles.css          Estilos y paleta de marca
+assets/config.js           ← DATOS DE CONTACTO (edita solo esto)
+assets/script.js           Menú, modal de la política, validación, WhatsApp
+assets/favicon.svg         Icono de pestaña
+tools/build-standalone.py  Genera la web en un único archivo (dist/index.html)
 ```
+
+## Versión en un solo archivo
+
+Para compartir la web por un enlace o abrirla sin la carpeta `assets/`:
+
+```bash
+python3 tools/build-standalone.py     # → dist/index.html, autocontenido
+```
+
+Incrusta estilos, configuración, script y favicon en un único HTML. Vuelve a
+ejecutarlo cada vez que cambies algo en `index.html` o en `assets/`.
 
 ## Puesta en marcha
 
@@ -21,18 +33,29 @@ Abre `index.html` en el navegador. Para servirla en local:
 python3 -m http.server 8000   # → http://localhost:8000
 ```
 
-## Antes de publicar: 3 cosas que debes rellenar
+## Antes de publicar: lo que debes rellenar
 
 Todo está en **`assets/config.js`**:
 
 | Campo | Qué poner |
 | --- | --- |
-| `email` | Tu email de contacto real |
-| `telefono` / `telefonoLink` | Tu teléfono (visible / para el enlace de llamada) |
+| `email` | Email donde quieres **recibir** las solicitudes (no se muestra en la web) |
 | `whatsapp` | Tu número internacional **sin** `+`, espacios ni guiones (ej. `34600123456`) |
 
-Los valores actuales de teléfono y WhatsApp son **de ejemplo** (`+34 600 000 000`)
-y hay que sustituirlos.
+El WhatsApp actual (`34600000000`) es **de ejemplo** y hay que sustituirlo. Es el
+único dato de contacto visible en la web: no se muestran email ni teléfono.
+
+### Y la política de tratamiento de datos
+
+El texto está redactado en `index.html`, dentro de `<dialog id="policyModal">`.
+Quedan **tres huecos por rellenar**, marcados entre corchetes:
+
+- `[Nombre y apellidos]` — tu nombre legal como responsable del tratamiento.
+- `[NIF]` — tu NIF.
+- `[email de contacto]` — la dirección para ejercer derechos (aparece dos veces).
+
+Ese email es obligatorio por el RGPD, así que conviene usar uno profesional en
+lugar del personal. Búscalos con `grep -n "\[" index.html`.
 
 ### Formulario de contacto
 
@@ -68,6 +91,9 @@ Cambiar cualquiera de estos valores actualiza toda la web.
 - Respeta `prefers-reduced-motion`.
 - Los textos de servicios, precios («Sesión única», «Proyecto cerrado») y el
   horario de atención son propuestas: ajústalos a tu oferta real en `index.html`.
-- El pie incluye un **aviso legal** y una nota de protección de datos genéricos.
-  Revísalos con un profesional antes de publicar, y añade los datos fiscales que
-  te exija la normativa aplicable.
+- El tema oscuro se resuelve **solo con variables CSS**, por lo que respeta tanto
+  la preferencia del sistema como un `data-theme="dark"` o `"light"` explícito en
+  la etiqueta raíz.
+- El pie incluye un **aviso legal** y un botón que abre la política de
+  tratamiento de datos completa. Conviene que un profesional los revise antes de
+  publicar y añadir los datos fiscales que exija la normativa aplicable.
