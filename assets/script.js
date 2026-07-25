@@ -10,18 +10,6 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Enlaces de WhatsApp ---------- */
-  function whatsappUrl(mensaje) {
-    return "https://wa.me/" + (CFG.whatsapp || "") +
-           "?text=" + encodeURIComponent(mensaje || "");
-  }
-
-  document.querySelectorAll("[data-whatsapp]").forEach(function (el) {
-    el.href = whatsappUrl(el.getAttribute("data-whatsapp"));
-    el.target = "_blank";
-    el.rel = "noopener noreferrer";
-  });
-
   /* ---------- Política de tratamiento de datos (modal) ---------- */
   var policy = document.getElementById("policyModal");
 
@@ -265,7 +253,7 @@
           "&body=" + encodeURIComponent(cuerpo);
 
         setStatus("Se abrirá tu programa de correo con la solicitud lista para enviar. " +
-                  "Si no ocurre nada, escríbeme por WhatsApp con el botón verde.", "ok");
+                  "Si no ocurre nada, escríbeme directamente a " + (CFG.email || "") + ".", "ok");
         return;
       }
 
@@ -288,7 +276,7 @@
         })
         .catch(function () {
           setStatus("No he podido enviar el formulario. Inténtalo de nuevo en unos " +
-                    "minutos o escríbeme por WhatsApp con el botón verde.", "error");
+                    "minutos o escríbeme a " + (CFG.email || "") + ".", "error");
         })
         .finally(function () {
           submitBtn.disabled = false;

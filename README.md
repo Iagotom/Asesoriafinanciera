@@ -9,7 +9,7 @@ financiera**. Sin dependencias, sin build: HTML, CSS y JavaScript planos.
 index.html                 Toda la página (hero, servicios, proceso, sobre mí, FAQ, contacto)
 assets/styles.css          Estilos y paleta de marca
 assets/config.js           ← DATOS DE CONTACTO (edita solo esto)
-assets/script.js           Menú, modal de la política, validación, WhatsApp
+assets/script.js           Menú, modal de la política, validación del formulario
 assets/favicon.svg         Icono de pestaña
 tools/build-standalone.py  Genera la web en un único archivo (dist/index.html)
 ```
@@ -33,36 +33,25 @@ Abre `index.html` en el navegador. Para servirla en local:
 python3 -m http.server 8000   # → http://localhost:8000
 ```
 
-## Antes de publicar: lo que debes rellenar
+## Datos ya configurados
 
-Todo está en **`assets/config.js`**:
+- **Responsable del tratamiento:** Iago Nicolás Tomassi, NIE Z4517048Z. Aparece
+  en la política de tratamiento de datos, dentro de `<dialog id="policyModal">`
+  en `index.html`.
+- **Email:** `contactoiagotomassi@gmail.com`. Está en `assets/config.js` como
+  destinatario del formulario y en la política como dirección para ejercer los
+  derechos de protección de datos, donde el RGPD obliga a publicarla.
 
-| Campo | Qué poner |
-| --- | --- |
-| `email` | Email donde quieres **recibir** las solicitudes (no se muestra en la web) |
-| `whatsapp` | Tu número internacional **sin** `+`, espacios ni guiones (ej. `34600123456`) |
-
-El WhatsApp actual (`34600000000`) es **de ejemplo** y hay que sustituirlo. Es el
-único dato de contacto visible en la web: no se muestran email ni teléfono.
-
-### Y la política de tratamiento de datos
-
-El texto está redactado en `index.html`, dentro de `<dialog id="policyModal">`.
-Quedan **tres huecos por rellenar**, marcados entre corchetes:
-
-- `[Nombre y apellidos]` — tu nombre legal como responsable del tratamiento.
-- `[NIF]` — tu NIF.
-- `[email de contacto]` — la dirección para ejercer derechos (aparece dos veces).
-
-Ese email es obligatorio por el RGPD, así que conviene usar uno profesional en
-lugar del personal. Búscalos con `grep -n "\[" index.html`.
+**El formulario es la única vía de contacto de la web**: no hay WhatsApp, ni
+teléfono, ni el email a la vista fuera de la política.
 
 ### Formulario de contacto
 
 Funciona de dos maneras, según `formEndpoint` en `config.js`:
 
 - **Vacío (por defecto)** — al enviar se abre el programa de correo del visitante
-  con la solicitud ya redactada hacia tu email. No necesita servidor.
+  con la solicitud ya redactada hacia tu email. No necesita servidor, pero falla
+  en móviles sin cliente de correo configurado.
 - **Con endpoint** — pega una URL de [Formspree](https://formspree.io),
   Getform o Basin y los envíos llegarán a tu email por AJAX, sin salir de la web.
   Es la opción recomendada en producción, porque `mailto:` falla en móviles

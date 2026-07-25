@@ -960,25 +960,6 @@ body.modal-open { overflow: hidden; }
   color: color-mix(in srgb, var(--brand-beige-light) 55%, transparent);
 }
 
-/* ---------- FAB WhatsApp ---------- */
-.fab {
-  position: fixed;
-  right: clamp(1rem, 3vw, 1.75rem);
-  bottom: clamp(1rem, 3vw, 1.75rem);
-  z-index: 90;
-  display: grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: var(--on-primary);
-  box-shadow: var(--shadow-lg);
-  transition: transform .2s ease, background-color .2s ease;
-}
-.fab:hover { background: var(--primary-hover); transform: scale(1.06); color: var(--on-primary); }
-.fab svg { width: 27px; height: 27px; fill: currentColor; }
-
 /* ---------- Reveal on scroll ----------
    Sólo se oculta si JavaScript está activo (la clase .js la añade el
    propio documento), de modo que sin JS la web sigue siendo legible. */
@@ -991,13 +972,13 @@ body.modal-open { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .card:hover, .fab:hover { transform: none; }
+  .card:hover { transform: none; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
 /* ---------- Print ---------- */
 @media print {
-  .site-header, .fab, .hero-cta, .contact-form .btn { display: none; }
+  .site-header, .hero-cta, .contact-form .btn { display: none; }
   body { background: #fff; color: #000; }
   .js .reveal { opacity: 1 !important; transform: none !important; }
 }
