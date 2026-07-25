@@ -225,6 +225,16 @@
         return;
       }
 
+      /* Trampa antispam: los robots rellenan todos los campos, incluidos los
+         que una persona no llega a ver. Si viene con contenido, fingimos que
+         todo ha ido bien y no enviamos nada. */
+      var trampa = document.getElementById("_honey");
+      if (trampa && trampa.value) {
+        setStatus("¡Solicitud enviada! Te responderé en menos de 24 h laborables.", "ok");
+        form.reset();
+        return;
+      }
+
       var datos = {
         nombre: document.getElementById("nombre").value.trim(),
         email: document.getElementById("email").value.trim(),
@@ -234,6 +244,8 @@
         origen: document.getElementById("origen").value || "No indicado",
         mensaje: document.getElementById("mensaje").value.trim()
       };
+
+      var asunto = "Nueva solicitud: " + datos.servicio + " — " + datos.nombre;
 
       /* Sin endpoint configurado: abrimos el cliente de correo del visitante. */
       if (!CFG.formEndpoint) {
@@ -246,8 +258,6 @@
           "Cómo conoció los servicios: " + datos.origen + "\n\n" +
           "Mensaje:\n" + datos.mensaje;
 
-        var asunto = "Solicitud de " + datos.servicio + " — " + datos.nombre;
-
         window.location.href = "mailto:" + (CFG.email || "") +
           "?subject=" + encodeURIComponent(asunto) +
           "&body=" + encodeURIComponent(cuerpo);
@@ -257,28 +267,102 @@
         return;
       }
 
-      /* Con endpoint configurado: envío por AJAX. */
+      /* Con endpoint configurado: envío en segundo plano. Las claves van con
+         nombre legible porque son las etiquetas que se verán en el email. */
+      var carga = {
+        "Nombre": datos.nombre,
+        "Email": datos.email,
+        "Teléfono": datos.telefono,
+        "Servicio de interés": datos.servicio,
+        "Prefiere contacto por": datos.preferencia,
+        "Cómo conoció los servicios": datos.origen,
+        "Mensaje": datos.mensaje
+      };
+
+      /* Campos de control propios de FormSubmit; otros proveedores los ignoran. */
+      if (/formsubmit\.co/.test(CFG.formEndpoint)) {
+        carga._subject = asunto;
+        carga._template = "table";
+        carga._captcha = "false";
+        carga._replyto = datos.email;
+      }
+
       submitBtn.disabled = true;
       var textoOriginal = submitBtn.textContent;
       submitBtn.textContent = "Enviando…";
       setStatus("Enviando tu solicitud…");
 
-      fetch(CFG.formEndpoint, {
+      /* Si el envío no sale (sin cobertura, servicio caído o una política de
+         seguridad que bloquea la petición), ofrecemos la misma solicitud como
+         borrador de correo para que el visitante no pierda lo que ha escrito. */
+      var fallo = function (motivo) {
+        if (window.console && console.warn) console.warn("Envío fallido:", motivo);
+
+        setStatus("No he podido enviar el formulario desde aquí. Puedes " +
+                  "enviármelo por correo con un clic:", "error");
+
+        if (!status) return;
+
+        var enlace = document.createElement("a");
+        enlace.className = "form-fallback";
+        enlace.textContent = "Enviar por correo";
+        enlace.href = "mailto:" + (CFG.email || "") +
+          "?subject=" + encodeURIComponent(asunto) +
+          "&body=" + encodeURIComponent(
+            "Nombre: " + datos.nombre + "\n" +
+            "Email: " + datos.email + "\n" +
+            "Teléfono: " + datos.telefono + "\n" +
+            "Servicio de interés: " + datos.servicio + "\n" +
+            "Prefiere contacto por: " + datos.preferencia + "\n" +
+            "Cómo conoció los servicios: " + datos.origen + "\n\n" +
+            "Mensaje:\n" + datos.mensaje);
+
+        status.appendChild(document.createElement("br"));
+        status.appendChild(enlace);
+      };
+
+      /* Cortamos a los 15 s para no dejar el botón bloqueado si no hay respuesta. */
+      var control = typeof AbortController === "function" ? new AbortController() : null;
+      var reloj = window.setTimeout(function () {
+        if (control) control.abort();
+      }, 15000);
+
+      var opciones = {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(datos)
-      })
+        body: JSON.stringify(carga)
+      };
+      if (control) opciones.signal = control.signal;
+
+      fetch(CFG.formEndpoint, opciones)
         .then(function (res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text().then(function (texto) {
+            var cuerpo = {};
+            try { cuerpo = JSON.parse(texto); } catch (err) { cuerpo = {}; }
+            return { ok: res.ok, status: res.status, cuerpo: cuerpo, texto: texto };
+          });
+        })
+        .then(function (res) {
+          /* FormSubmit responde 200 con success:"false" mientras la dirección
+             de destino no está confirmada: no es un envío entregado. */
+          var entregado = res.ok &&
+            (res.cuerpo.success === undefined ||
+             String(res.cuerpo.success) === "true");
+
+          if (!entregado) {
+            fallo("HTTP " + res.status + " — " + (res.cuerpo.message || res.texto).slice(0, 200));
+            return;
+          }
+
           form.reset();
           campos.forEach(function (campo) { mostrarError(campo, ""); });
           setStatus("¡Solicitud enviada! Te responderé en menos de 24 h laborables.", "ok");
         })
-        .catch(function () {
-          setStatus("No he podido enviar el formulario. Inténtalo de nuevo en unos " +
-                    "minutos o escríbeme a " + (CFG.email || "") + ".", "error");
+        .catch(function (err) {
+          fallo(err && err.name === "AbortError" ? "tiempo de espera agotado" : err);
         })
-        .finally(function () {
+        .then(function () {
+          window.clearTimeout(reloj);
           submitBtn.disabled = false;
           submitBtn.textContent = textoOriginal;
         });

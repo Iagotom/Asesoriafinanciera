@@ -1,0 +1,53 @@
+name: Publicar en GitHub Pages
+
+# Publica la web cada vez que cambia la rama principal.
+# Requiere activarlo una vez en el repositorio:
+#   Settings → Pages → Build and deployment → Source: GitHub Actions
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Si se acumulan varios despliegues, sólo interesa el último.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Comprobar que la web se genera sin errores
+        run: python3 tools/build-standalone.py
+
+      - name: Preparar los archivos a publicar
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -r assets _site/
+          # Copia de un solo archivo, útil para descargar o compartir.
+          cp dist/index.html _site/web-en-un-archivo.html
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir los archivos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Desplegar
+        id: despliegue
+        uses: actions/deploy-pages@v4

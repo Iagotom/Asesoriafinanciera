@@ -752,12 +752,34 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .check { display: flex; gap: .7rem; align-items: flex-start; font-weight: 400; font-size: .875rem; color: var(--ink-soft); cursor: pointer; }
 .check input { width: 18px; height: 18px; margin-top: .15rem; flex: none; accent-color: var(--primary); }
 
+/* Trampa antispam: fuera de la vista pero no oculta con display:none,
+   porque algunos robots ignoran los campos ocultos de ese modo. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-note {
   margin-top: 1rem;
   font-size: .9rem;
   text-align: center;
   color: var(--ink-muted);
 }
+.form-fallback {
+  display: inline-block;
+  margin-top: .6rem;
+  padding: .55rem 1.2rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.form-fallback:hover { background: var(--primary-hover); color: var(--on-primary); }
+
 .form-note.is-ok { color: var(--success); font-weight: 600; }
 .form-note.is-error { color: var(--danger); font-weight: 600; }
 

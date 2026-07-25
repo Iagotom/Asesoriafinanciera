@@ -7,6 +7,7 @@ financiera**. Sin dependencias, sin build: HTML, CSS y JavaScript planos.
 
 ```
 index.html                 Toda la página (hero, servicios, proceso, sobre mí, FAQ, contacto)
+.github/workflows/         Publicación automática en GitHub Pages
 assets/styles.css          Estilos y paleta de marca
 assets/config.js           ← DATOS DE CONTACTO (edita solo esto)
 assets/script.js           Menú, modal de la política, validación del formulario
@@ -47,15 +48,44 @@ teléfono, ni el email a la vista fuera de la política.
 
 ### Formulario de contacto
 
-Funciona de dos maneras, según `formEndpoint` en `config.js`:
+Ya está conectado a **[FormSubmit](https://formsubmit.co)**, que no necesita
+registro ni servidor: los envíos llegan a `contactoiagotomassi@gmail.com`.
 
-- **Vacío (por defecto)** — al enviar se abre el programa de correo del visitante
-  con la solicitud ya redactada hacia tu email. No necesita servidor, pero falla
-  en móviles sin cliente de correo configurado.
-- **Con endpoint** — pega una URL de [Formspree](https://formspree.io),
-  Getform o Basin y los envíos llegarán a tu email por AJAX, sin salir de la web.
-  Es la opción recomendada en producción, porque `mailto:` falla en móviles
-  sin cliente de correo configurado.
+**Queda un paso, que sólo puedes dar tú.** La primera vez que se envíe el
+formulario desde la web publicada, FormSubmit manda un correo de confirmación a
+esa dirección. Hasta que pulses su enlace, los envíos no se entregan y el
+visitante ve el aviso de que no ha podido enviarse. Es una única vez.
+
+Después conviene **ocultar la dirección**: FormSubmit te da un alias con forma de
+token al activarla, y basta con sustituir el email en `formEndpoint`:
+
+```js
+formEndpoint: "https://formsubmit.co/ajax/a1b2c3d4e5f6..."
+```
+
+Si algún día quieres cambiar de proveedor, el código es agnóstico: pega el
+endpoint de Formspree, Getform o Basin y funcionará igual.
+
+**Si el envío falla** —sin cobertura, servicio caído o una política de seguridad
+que bloquee la petición— la web no pierde lo escrito: muestra un botón «Enviar
+por correo» que abre el borrador con toda la solicitud ya redactada.
+
+El formulario incluye una **trampa antispam** (un campo invisible que sólo
+rellenan los robots); si viene con contenido, el envío se descarta en silencio.
+
+## Publicación
+
+El repositorio trae un flujo de trabajo que publica la web en **GitHub Pages**
+en cada cambio de la rama principal (`.github/workflows/pages.yml`).
+
+Para activarlo, una sola vez: **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. A partir de ahí, cada push publica la web y la URL
+aparece en la pestaña Actions.
+
+> El formulario necesita estar en un dominio real para poder contactar con
+> FormSubmit. Los visores de vista previa suelen bloquear las peticiones a
+> servicios externos por política de seguridad, y ahí sólo funcionará el botón
+> de respaldo por correo.
 
 ## Paleta de marca
 
