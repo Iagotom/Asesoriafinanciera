@@ -10,6 +10,8 @@ index.html                 Toda la página (hero, servicios, proceso, sobre mí,
 .github/workflows/         Publicación automática en GitHub Pages
 assets/styles.css          Estilos y paleta de marca
 assets/config.js           ← DATOS DE CONTACTO (edita solo esto)
+assets/opiniones.js        ← OPINIONES DE CLIENTES (edita solo esto)
+assets/img/                Fotografía del perfil
 assets/script.js           Menú, modal de la política, validación del formulario
 assets/favicon.svg         Icono de pestaña
 tools/build-standalone.py  Genera la web en un único archivo (dist/index.html)
@@ -33,6 +35,46 @@ Abre `index.html` en el navegador. Para servirla en local:
 ```bash
 python3 -m http.server 8000   # → http://localhost:8000
 ```
+
+## Sección «Quién soy»: dos huecos por rellenar
+
+En `index.html`, buscables con `grep -n "HUECO" index.html`:
+
+- **HUECO 1 — Tu historia.** Dos párrafos: cómo llegaste a la asesoría financiera
+  y a quién ayudas. El texto entre corchetes son indicaciones, no contenido:
+  hay que sustituirlo.
+- **HUECO 2 — Formación y trayectoria.** Cada `<div class="hito">` es un año más
+  una línea. Añade o quita los que necesites.
+
+### La fotografía
+
+Ahora hay una imagen de relleno. Para poner la tuya:
+
+1. Guarda tu foto en `assets/img/foto.jpg` (vertical, proporción 5:6, unos
+   1000 × 1200 px va sobrado).
+2. En `index.html`, cambia el `src` a `assets/img/foto.jpg`.
+3. Ajusta el `alt` si quieres describirla mejor. El `alt` no es decorativo: es
+   lo que oye quien no puede ver la imagen.
+
+## Opiniones de clientes
+
+Se publican editando **`assets/opiniones.js`**: añades un bloque con `texto`,
+`nombre` y, si quieres, `detalle` y `fecha`. La sección aparece sola en la web
+—y su enlace en el menú— cuando hay al menos una; con la lista vacía no se
+muestra, para que no quede un apartado desierto.
+
+El texto se inserta como texto, nunca como HTML, así que una opinión con
+etiquetas dentro se muestra literal y no puede ejecutar nada.
+
+**Antes de publicar cualquiera** (está también recordado dentro del archivo):
+
+1. Consentimiento por escrito de esa persona, guardado.
+2. Sin retocar el sentido de lo que escribió. Inventar opiniones es publicidad
+   engañosa.
+3. Sin cifras de rentabilidad ni promesas de resultados: en servicios
+   financieros es justo lo que la normativa de comunicaciones comerciales no
+   permite.
+4. Sin datos que permitan identificar la situación patrimonial de nadie.
 
 ## Datos ya configurados
 
@@ -101,7 +143,7 @@ Definida como variables CSS al inicio de `assets/styles.css`:
 | --- | --- | --- |
 | `--brand-granate-deep` | `#4A1825` | Fondos oscuros, pie de página |
 | `--brand-granate` | `#6D2235` | Color principal, botones |
-| `--brand-granate-light` | `#8C3A4F` | Acento, modo oscuro |
+| `--brand-granate-light` | `#8C3A4F` | Acento |
 | `--brand-beige` | `#E8DCC8` | Fondo general de la web |
 | `--brand-beige-light` | `#F5EFE3` | Secciones alternas y paneles |
 | `--brand-cream` | `#FBF8F2` | Campos de formulario, resplandor del hero |

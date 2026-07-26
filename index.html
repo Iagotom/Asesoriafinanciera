@@ -32,7 +32,8 @@
         <ul role="list">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proceso">Cómo trabajo</a></li>
-          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#sobre-mi">Quién soy</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
           <li><a href="#faq">Preguntas</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -205,36 +206,105 @@
       </div>
     </section>
 
-    <!-- SOBRE MI -->
+    <!-- QUIÉN SOY -->
     <section class="section" id="sobre-mi" aria-labelledby="sobre-titulo">
-      <div class="container about">
-        <div class="about-copy reveal">
-          <p class="eyebrow">Sobre mí</p>
-          <h2 id="sobre-titulo">Asesoramiento sin conflicto de interés</h2>
-          <p>
-            Trabajo únicamente con honorarios pagados por el cliente: no cobro comisiones por
-            colocar productos ni tengo acuerdos con entidades. Eso significa que mi única
-            recomendación posible es la que te conviene a ti.
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Quién soy</p>
+          <h2 id="sobre-titulo">Iago Nicolás Tomassi</h2>
+          <p class="section-intro">
+            Asesor financiero independiente. Trabajo solo con honorarios pagados por el
+            cliente: sin comisiones de entidades, sin productos que colocar.
           </p>
-          <p>
-            Mi enfoque es sencillo: primero orden, después estrategia. Antes de hablar de
-            inversiones nos aseguramos de que tu base esté sólida —gastos bajo control, colchón
-            de seguridad y deudas gestionadas— porque es ahí donde se gana la mayor parte del juego.
-          </p>
-          <ul role="list" class="about-list">
-            <li>Enfoque en planificación a largo plazo, no en operar a corto</li>
-            <li>Costes y comisiones siempre sobre la mesa</li>
-            <li>Documentación y conclusiones por escrito</li>
-          </ul>
-          <a class="btn btn-primary" href="#contacto" data-cta="sobre-mi">Hablemos de tu caso</a>
+        </header>
+
+        <div class="perfil">
+          <figure class="perfil-foto reveal">
+            <!-- Sustituye el src por assets/img/foto.jpg y ajusta el alt. -->
+            <img src="assets/img/foto-placeholder.svg"
+                 alt="Retrato de Iago Nicolás Tomassi, asesor financiero"
+                 width="600" height="720" loading="lazy" decoding="async">
+            <figcaption>Iago Nicolás Tomassi, asesor financiero independiente</figcaption>
+          </figure>
+
+          <div class="perfil-texto reveal">
+            <h3>Mi historia</h3>
+            <p>
+              <!-- HUECO 1 · Tu historia. Sustituye estos dos párrafos. -->
+              [Cuenta aquí cómo llegaste a la asesoría financiera: a qué te dedicabas antes,
+              qué te empujó a especializarte y qué momento te hizo ver que querías dedicarte a
+              esto. Dos o tres frases concretas valen más que un párrafo genérico.]
+            </p>
+            <p>
+              [Segundo párrafo: qué tipo de personas ayudas y por qué te importa. Si hay una
+              anécdota real —un cliente que llegó sin saber por dónde empezar, un error propio
+              que te enseñó algo— ponla. Es lo que más conecta.]
+            </p>
+
+            <h3>Cómo trabajo</h3>
+            <p>
+              Primero orden, después estrategia. Antes de hablar de inversiones nos aseguramos
+              de que tu base esté sólida —gastos bajo control, colchón de seguridad y deudas
+              gestionadas—, porque es ahí donde se gana la mayor parte del juego.
+            </p>
+            <ul role="list" class="about-list">
+              <li>Planificación a largo plazo, no operativa a corto</li>
+              <li>Costes y comisiones siempre sobre la mesa</li>
+              <li>Documentación y conclusiones por escrito</li>
+            </ul>
+
+            <a class="btn btn-primary" href="#contacto" data-cta="sobre-mi">Hablemos de tu caso</a>
+          </div>
         </div>
 
-        <figure class="about-quote reveal">
-          <blockquote>
-            «La mejor decisión financiera no es la más rentable sobre el papel, sino la que puedes
-            mantener durante veinte años.»
-          </blockquote>
-        </figure>
+        <div class="trayectoria reveal">
+          <h3 id="trayectoria-titulo">Formación y trayectoria</h3>
+          <!-- HUECO 2 · Sustituye cada elemento por tus datos reales.
+               Añade o quita los que necesites. -->
+          <dl class="hitos" aria-labelledby="trayectoria-titulo">
+            <div class="hito">
+              <dt>[Año]</dt>
+              <dd>[Titulación o estudios. Ej.: Grado en Administración y Dirección de
+                  Empresas, Universidad X]</dd>
+            </div>
+            <div class="hito">
+              <dt>[Año]</dt>
+              <dd>[Certificación profesional. Ej.: certificación EFPA European Financial
+                  Advisor, o el título que tengas]</dd>
+            </div>
+            <div class="hito">
+              <dt>[Año]</dt>
+              <dd>[Experiencia relevante. Ej.: asesor en tal entidad, área y responsabilidad]</dd>
+            </div>
+            <div class="hito">
+              <dt>Hoy</dt>
+              <dd>Asesoramiento independiente a particulares y autónomos, 100 % online.</dd>
+            </div>
+          </dl>
+
+          <figure class="about-quote">
+            <blockquote>
+              «La mejor decisión financiera no es la más rentable sobre el papel, sino la que
+              puedes mantener durante veinte años.»
+            </blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES · se muestra sola cuando hay opiniones en assets/opiniones.js -->
+    <section class="section section-alt" id="opiniones" aria-labelledby="opiniones-titulo" hidden>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Opiniones</p>
+          <h2 id="opiniones-titulo">Lo que dicen quienes ya han trabajado conmigo</h2>
+          <p class="section-intro">
+            Publicadas con el consentimiento expreso de cada persona. Ninguna opinión
+            garantiza resultados: cada situación financiera es distinta.
+          </p>
+        </header>
+
+        <ul role="list" class="opiniones" id="listaOpiniones"></ul>
       </div>
     </section>
 
@@ -413,6 +483,7 @@
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Cómo trabajo</a>
         <a href="#faq">Preguntas frecuentes</a>
+        <a href="#sobre-mi">Quién soy</a>
         <a href="#contacto">Contacto</a>
         <button type="button" class="link-btn footer-policy" data-open-policy
                 aria-label="Leer la política de tratamiento de datos">Política de tratamiento de datos</button>
@@ -571,6 +642,7 @@
 
 
   <script src="assets/config.js"></script>
+  <script src="assets/opiniones.js"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>

@@ -70,6 +70,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* La cabecera es fija: sin este margen, al llegar por un enlace del menú
+     el título de la sección queda debajo de ella. */
+  scroll-padding-top: 6rem;
   background: var(--bg);
   /* La web sólo tiene paleta clara: así el navegador no oscurece por su
      cuenta los controles de formulario ni las barras de desplazamiento. */
@@ -548,15 +551,135 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .process h3 { font-size: 1.1rem; margin-bottom: .4rem; }
 .process p { font-size: .925rem; color: var(--ink-soft); }
 
-/* ---------- Sobre mí ---------- */
-.about {
+/* ---------- Quién soy ---------- */
+.perfil {
   display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
-@media (max-width: 900px) { .about { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .perfil { grid-template-columns: 1fr; } }
 
+.perfil-foto {
+  margin: 0;
+  position: sticky;
+  top: 100px;
+}
+@media (max-width: 860px) {
+  .perfil-foto { position: static; max-width: 420px; }
+}
+.perfil-foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--bg-alt);
+  box-shadow: var(--shadow-lg);
+  /* Filete dorado sin desplazar el encaje. */
+  outline: 3px solid var(--brand-gold);
+  outline-offset: -3px;
+}
+.perfil-foto figcaption {
+  margin-top: .85rem;
+  font-size: .85rem;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.perfil-texto h3 {
+  margin-bottom: .5rem;
+  padding-bottom: .6rem;
+  border-bottom: 2px solid var(--brand-gold);
+  display: inline-block;
+}
+.perfil-texto h3:not(:first-child) { margin-top: 2.25rem; }
+.perfil-texto p { color: var(--ink-soft); }
+
+/* ---------- Formación y trayectoria ---------- */
+.trayectoria {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 860px) { .trayectoria { grid-template-columns: 1fr; } }
+.trayectoria > h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.hitos { display: grid; gap: 0; }
+.hito {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.hito:last-child { border-bottom: 0; }
+@media (max-width: 520px) {
+  .hito { grid-template-columns: 1fr; gap: .2rem; }
+}
+.hito dt {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  font-variant-numeric: tabular-nums;
+}
+.hito dd {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Opiniones ---------- */
+.opiniones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.15rem, 2vw, 1.75rem);
+  align-items: stretch;
+}
+
+.opinion { display: flex; }
+
+.opinion figure {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  height: 100%;
+  margin: 0;
+  padding: clamp(1.5rem, 2.5vw, 1.9rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.opinion-texto {
+  margin: 0;
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 1.075rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.opinion-autor {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.opinion-nombre { font-weight: 700; font-size: .95rem; }
+.opinion-detalle { font-size: .85rem; color: var(--ink-muted); }
+
+/* ---------- Cita destacada ---------- */
 .about-copy p { color: var(--ink-soft); }
 .about-list { margin: 1.75rem 0 2rem; display: grid; gap: .65rem; }
 .about-list li {

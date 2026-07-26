@@ -10,6 +10,79 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* ---------- Opiniones de clientes ----------
+     Se pintan desde assets/opiniones.js. Si no hay ninguna, la sección y su
+     enlace del menú no aparecen: una sección de opiniones vacía resta. */
+  (function opiniones() {
+    var seccion = document.getElementById("opiniones");
+    var lista = document.getElementById("listaOpiniones");
+    var enlace = document.querySelector('.nav a[href="#opiniones"]');
+    var datos = Array.isArray(window.OPINIONES) ? window.OPINIONES : [];
+
+    /* Sólo las que tengan lo imprescindible. */
+    datos = datos.filter(function (o) {
+      return o && typeof o.texto === "string" && o.texto.trim() &&
+             typeof o.nombre === "string" && o.nombre.trim();
+    });
+
+    if (!seccion || !lista) return;
+
+    if (!datos.length) {
+      seccion.remove();
+      if (enlace && enlace.parentNode) enlace.parentNode.remove();
+      return;
+    }
+
+    var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+                 "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+    function fechaLegible(valor) {
+      var m = /^(\d{4})-(\d{2})$/.exec(String(valor || ""));
+      if (!m) return "";
+      var mes = MESES[Number(m[2]) - 1];
+      return mes ? mes + " de " + m[1] : "";
+    }
+
+    datos.forEach(function (o) {
+      var li = document.createElement("li");
+      li.className = "opinion reveal";
+
+      var cita = document.createElement("blockquote");
+      cita.className = "opinion-texto";
+      /* textContent y no innerHTML: el texto lo escribe una persona, no se
+         interpreta como marcado. */
+      cita.textContent = "«" + o.texto.trim() + "»";
+
+      var pie = document.createElement("figcaption");
+      pie.className = "opinion-autor";
+
+      var nombre = document.createElement("span");
+      nombre.className = "opinion-nombre";
+      nombre.textContent = o.nombre.trim();
+      pie.appendChild(nombre);
+
+      var extras = [];
+      if (o.detalle && String(o.detalle).trim()) extras.push(String(o.detalle).trim());
+      var f = fechaLegible(o.fecha);
+      if (f) extras.push(f);
+
+      if (extras.length) {
+        var detalle = document.createElement("span");
+        detalle.className = "opinion-detalle";
+        detalle.textContent = extras.join(" · ");
+        pie.appendChild(detalle);
+      }
+
+      var figura = document.createElement("figure");
+      figura.appendChild(cita);
+      figura.appendChild(pie);
+      li.appendChild(figura);
+      lista.appendChild(li);
+    });
+
+    seccion.removeAttribute("hidden");
+  })();
+
   /* ---------- Política de tratamiento de datos (modal) ---------- */
   var policy = document.getElementById("policyModal");
 

@@ -33,10 +33,42 @@ def extraer(patron: str, texto: str, que: str) -> str:
     return encontrado.group(1)
 
 
+TIPOS = {
+    ".svg": "image/svg+xml",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+    ".avif": "image/avif",
+    ".gif": "image/gif",
+}
+
+
+def a_data_uri(ruta_relativa: str) -> str:
+    """Convierte un archivo de assets/ en data URI, para no depender de él."""
+    archivo = RAIZ / ruta_relativa
+    if not archivo.exists():
+        sys.exit(f"No existe el archivo referenciado: {ruta_relativa}")
+    tipo = TIPOS.get(archivo.suffix.lower())
+    if not tipo:
+        sys.exit(f"Tipo de imagen no soportado: {ruta_relativa}")
+    datos = base64.b64encode(archivo.read_bytes()).decode("ascii")
+    return f"data:{tipo};base64,{datos}"
+
+
+def incrustar_imagenes(marcado: str) -> str:
+    """Sustituye los src="assets/..." de las imágenes por su data URI."""
+    def reemplazo(m):
+        return m.group(1) + a_data_uri(m.group(2)) + m.group(3)
+
+    return re.sub(r'(src=")(assets/[^"]+)(")', reemplazo, marcado)
+
+
 def construir(fragmento: bool) -> str:
     html = leer("index.html")
     css = leer("assets/styles.css")
     config = leer("assets/config.js")
+    opiniones = leer("assets/opiniones.js")
     script = leer("assets/script.js")
 
     titulo = extraer(r"<title>(.*?)</title>", html, "el título")
@@ -58,11 +90,12 @@ def construir(fragmento: bool) -> str:
         f"<style>\n{css}\n</style>",
     ])
 
-    marcado = (cuerpo.replace('<script src="assets/config.js"></script>', "")
-                     .replace('<script src="assets/script.js"></script>', "")
-                     .strip())
+    marcado = cuerpo
+    for etiqueta in ("config.js", "opiniones.js", "script.js"):
+        marcado = marcado.replace(f'<script src="assets/{etiqueta}"></script>', "")
+    marcado = incrustar_imagenes(marcado).strip()
 
-    codigo = f"<script>\n{config}\n{script}\n</script>"
+    codigo = f"<script>\n{config}\n{opiniones}\n{script}\n</script>"
 
     if fragmento:
         return f"{cabecera}\n{marcado}\n{codigo}\n"
