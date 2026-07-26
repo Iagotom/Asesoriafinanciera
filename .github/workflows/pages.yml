@@ -6,7 +6,12 @@ name: Publicar en GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    # La rama por defecto del repositorio es la de trabajo, así que va listada
+    # junto a los nombres habituales por si más adelante cambia.
+    branches:
+      - main
+      - master
+      - claude/financial-advisory-website-djslpz
   workflow_dispatch:
 
 permissions:

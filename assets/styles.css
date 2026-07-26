@@ -19,7 +19,7 @@
   --brand-granate-darker: #35111B;
 
   /* --- TOKENS SEMÁNTICOS --- */
-  --bg: var(--brand-cream);
+  --bg: var(--brand-beige);
   --bg-alt: var(--brand-beige-light);
   --surface: #FFFFFF;
   --surface-alt: var(--brand-cream);
@@ -39,7 +39,7 @@
   --badge-fg: var(--primary);
   --band-bg: var(--brand-granate);
   --band-fg: var(--brand-beige-light);
-  --hero-glow: color-mix(in srgb, var(--brand-beige) 70%, transparent);
+  --hero-glow: color-mix(in srgb, var(--brand-cream) 88%, transparent);
   --danger: #C0392B;
   --success: #1E7A4C;
 

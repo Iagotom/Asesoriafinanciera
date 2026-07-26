@@ -79,8 +79,14 @@ El repositorio trae un flujo de trabajo que publica la web en **GitHub Pages**
 en cada cambio de la rama principal (`.github/workflows/pages.yml`).
 
 Para activarlo, una sola vez: **Settings → Pages → Build and deployment →
-Source: GitHub Actions**. A partir de ahí, cada push publica la web y la URL
-aparece en la pestaña Actions.
+Source: GitHub Actions**. El repositorio es público, así que Pages funciona sin
+coste. La web quedará en:
+
+```
+https://iagotom.github.io/Asesoriafinanciera/
+```
+
+A partir de ahí, cada push a la rama por defecto la vuelve a publicar.
 
 > El formulario necesita estar en un dominio real para poder contactar con
 > FormSubmit. Los visores de vista previa suelen bloquear las peticiones a
@@ -96,9 +102,9 @@ Definida como variables CSS al inicio de `assets/styles.css`:
 | `--brand-granate-deep` | `#4A1825` | Fondos oscuros, pie de página |
 | `--brand-granate` | `#6D2235` | Color principal, botones |
 | `--brand-granate-light` | `#8C3A4F` | Acento, modo oscuro |
-| `--brand-beige` | `#E8DCC8` | Beige cálido, degradados |
-| `--brand-beige-light` | `#F5EFE3` | Fondos de sección |
-| `--brand-cream` | `#FBF8F2` | Fondo general |
+| `--brand-beige` | `#E8DCC8` | Fondo general de la web |
+| `--brand-beige-light` | `#F5EFE3` | Secciones alternas y paneles |
+| `--brand-cream` | `#FBF8F2` | Campos de formulario, resplandor del hero |
 | `--brand-gold` | `#B08B4F` | Detalles: etiquetas, filetes, comillas |
 
 Cambiar cualquiera de estos valores actualiza toda la web.
