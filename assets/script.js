@@ -122,6 +122,15 @@
       window.setTimeout(function () {
         var nombre = document.getElementById("nombre");
         if (nombre) nombre.focus({ preventScroll: true });
+
+        /* Al pulsar "Contratar" el foco salta al formulario. Sin este aviso,
+           quien navega con lector de pantalla no sabría por qué se ha movido. */
+        var aviso = document.getElementById("formStatus");
+        if (aviso) {
+          aviso.className = "form-note";
+          aviso.textContent = "Servicio seleccionado: " + servicio +
+            ". Completa el formulario para enviar tu solicitud.";
+        }
       }, 600);
     });
   });
@@ -215,12 +224,20 @@
       e.preventDefault();
 
       var primerError = null;
+      var cuantos = 0;
       campos.forEach(function (campo) {
-        if (!validarCampo(campo) && !primerError) primerError = campo;
+        if (!validarCampo(campo)) {
+          cuantos += 1;
+          if (!primerError) primerError = campo;
+        }
       });
 
       if (primerError) {
-        setStatus("Revisa los campos marcados antes de enviar.", "error");
+        /* El recuento se dice en voz alta: quien no ve la marca roja necesita
+           saber cuántos campos faltan, no sólo que "hay errores". */
+        setStatus(cuantos === 1
+          ? "Falta 1 campo por revisar antes de enviar."
+          : "Faltan " + cuantos + " campos por revisar antes de enviar.", "error");
         primerError.focus();
         return;
       }

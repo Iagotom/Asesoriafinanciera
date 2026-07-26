@@ -16,6 +16,7 @@
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contactForm">Saltar al formulario de contacto</a>
 
   <header class="site-header" id="header">
     <div class="container header-inner">
@@ -28,7 +29,7 @@
       </a>
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
-        <ul>
+        <ul role="list">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proceso">Cómo trabajo</a></li>
           <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -49,11 +50,11 @@
   <main id="contenido">
 
     <!-- HERO -->
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
       <div class="container hero-inner">
         <div class="hero-copy reveal">
           <p class="eyebrow">Asesor financiero independiente</p>
-          <h1>Tu dinero, con un plan detrás.</h1>
+          <h1 id="hero-titulo">Tu dinero, con un plan detrás.</h1>
           <p class="lead">
             Ordenamos tus finanzas, definimos objetivos realistas y construimos una estrategia
             de ahorro e inversión adaptada a tu perfil. Sin productos que vender, sin letra pequeña.
@@ -62,7 +63,7 @@
             <a class="btn btn-primary" href="#contacto" data-cta="hero">Reservar primera consulta</a>
             <a class="btn btn-ghost" href="#servicios">Ver los servicios</a>
           </div>
-          <ul class="hero-points">
+          <ul role="list" class="hero-points">
             <li>Primera llamada de 30 min sin coste</li>
             <li>Honorarios fijos y transparentes</li>
             <li>100 % online</li>
@@ -74,7 +75,7 @@
             <span class="badge">Primera consulta gratuita</span>
             <h2>¿Por dónde empezamos?</h2>
           </div>
-          <ol class="hero-steps">
+          <ol role="list" class="hero-steps">
             <li><span>1</span><div><strong>Hablamos 30 minutos</strong><p>Me cuentas tu situación y qué quieres conseguir.</p></div></li>
             <li><span>2</span><div><strong>Te propongo un alcance</strong><p>Servicio, plazos y honorarios por escrito, sin compromiso.</p></div></li>
             <li><span>3</span><div><strong>Nos ponemos en marcha</strong><p>Plan concreto y accionable, con seguimiento.</p></div></li>
@@ -95,11 +96,11 @@
     </section>
 
     <!-- SERVICIOS -->
-    <section class="section" id="servicios">
+    <section class="section" id="servicios" aria-labelledby="servicios-titulo">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Servicios</p>
-          <h2>Elige el punto de partida</h2>
+          <h2 id="servicios-titulo">Elige el punto de partida</h2>
           <p class="section-intro">
             Cuatro formas de trabajar juntos. Si no sabes cuál encaja, empieza por la consulta
             gratuita y lo decidimos en la llamada.
@@ -114,12 +115,12 @@
               Radiografía completa de tu situación: ingresos, gastos, deudas, colchón de seguridad
               y riesgos. Sales con un informe y una lista de prioridades.
             </p>
-            <ul class="card-list">
+            <ul role="list" class="card-list">
               <li>Sesión de 90 minutos</li>
               <li>Informe con puntos críticos</li>
               <li>Plan de acción a 90 días</li>
             </ul>
-            <button class="btn btn-outline btn-block" data-service="Diagnóstico financiero">Contratar</button>
+            <button class="btn btn-outline btn-block" data-service="Diagnóstico financiero" aria-label="Contratar: Diagnóstico financiero">Contratar</button>
           </article>
 
           <article class="card card-featured reveal">
@@ -130,12 +131,12 @@
               Tu hoja de ruta completa: presupuesto, objetivos por plazos, fondo de emergencia,
               estrategia de ahorro y previsión de jubilación.
             </p>
-            <ul class="card-list">
+            <ul role="list" class="card-list">
               <li>2–3 sesiones de trabajo</li>
               <li>Plan escrito y cuantificado</li>
               <li>Revisión de seguimiento incluida</li>
             </ul>
-            <button class="btn btn-primary btn-block" data-service="Plan financiero personal">Contratar</button>
+            <button class="btn btn-primary btn-block" data-service="Plan financiero personal" aria-label="Contratar: Plan financiero personal">Contratar</button>
           </article>
 
           <article class="card reveal">
@@ -145,12 +146,12 @@
               Definimos tu perfil de riesgo y horizonte temporal, y diseñamos una cartera
               diversificada, eficiente en costes y coherente con tus objetivos.
             </p>
-            <ul class="card-list">
+            <ul role="list" class="card-list">
               <li>Test de perfil y horizonte</li>
               <li>Propuesta de cartera y costes</li>
               <li>Reglas de aportación y rebalanceo</li>
             </ul>
-            <button class="btn btn-outline btn-block" data-service="Estrategia de inversión">Contratar</button>
+            <button class="btn btn-outline btn-block" data-service="Estrategia de inversión" aria-label="Contratar: Estrategia de inversión">Contratar</button>
           </article>
 
           <article class="card reveal">
@@ -160,26 +161,26 @@
               Para quien quiere no perder el rumbo: seguimiento periódico, ajustes del plan y
               respuesta a las decisiones que aparezcan por el camino.
             </p>
-            <ul class="card-list">
+            <ul role="list" class="card-list">
               <li>Revisión periódica del plan</li>
               <li>Consultas ilimitadas por email</li>
               <li>Ajustes ante cambios vitales</li>
             </ul>
-            <button class="btn btn-outline btn-block" data-service="Acompañamiento continuo">Contratar</button>
+            <button class="btn btn-outline btn-block" data-service="Acompañamiento continuo" aria-label="Contratar: Acompañamiento continuo">Contratar</button>
           </article>
         </div>
       </div>
     </section>
 
     <!-- PROCESO -->
-    <section class="section section-alt" id="proceso">
+    <section class="section section-alt" id="proceso" aria-labelledby="proceso-titulo">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Cómo trabajo</p>
-          <h2>Un proceso ordenado, de principio a fin</h2>
+          <h2 id="proceso-titulo">Un proceso ordenado, de principio a fin</h2>
         </header>
 
-        <ol class="process">
+        <ol role="list" class="process">
           <li class="reveal"><span class="process-num">01</span>
             <h3>Llamada inicial</h3>
             <p>30 minutos sin coste para entender tu situación y ver si puedo ayudarte. Si no es el caso, te lo diré.</p>
@@ -205,11 +206,11 @@
     </section>
 
     <!-- SOBRE MI -->
-    <section class="section" id="sobre-mi">
+    <section class="section" id="sobre-mi" aria-labelledby="sobre-titulo">
       <div class="container about">
         <div class="about-copy reveal">
           <p class="eyebrow">Sobre mí</p>
-          <h2>Asesoramiento sin conflicto de interés</h2>
+          <h2 id="sobre-titulo">Asesoramiento sin conflicto de interés</h2>
           <p>
             Trabajo únicamente con honorarios pagados por el cliente: no cobro comisiones por
             colocar productos ni tengo acuerdos con entidades. Eso significa que mi única
@@ -220,7 +221,7 @@
             inversiones nos aseguramos de que tu base esté sólida —gastos bajo control, colchón
             de seguridad y deudas gestionadas— porque es ahí donde se gana la mayor parte del juego.
           </p>
-          <ul class="about-list">
+          <ul role="list" class="about-list">
             <li>Enfoque en planificación a largo plazo, no en operar a corto</li>
             <li>Costes y comisiones siempre sobre la mesa</li>
             <li>Documentación y conclusiones por escrito</li>
@@ -238,11 +239,11 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section section-alt" id="faq">
+    <section class="section section-alt" id="faq" aria-labelledby="faq-titulo">
       <div class="container narrow">
         <header class="section-head reveal">
           <p class="eyebrow">Preguntas frecuentes</p>
-          <h2>Lo que suelen preguntarme</h2>
+          <h2 id="faq-titulo">Lo que suelen preguntarme</h2>
         </header>
 
         <div class="faq reveal">
@@ -275,11 +276,11 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="section" id="contacto">
+    <section class="section" id="contacto" aria-labelledby="contacto-titulo">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Contacto</p>
-          <h2>Cuéntame qué necesitas</h2>
+          <h2 id="contacto-titulo">Cuéntame qué necesitas</h2>
           <p class="section-intro">
             Rellena el formulario y te respondo en menos de 24 h laborables. La primera
             consulta de 30 minutos no tiene coste ni compromiso.
@@ -287,30 +288,31 @@
         </header>
 
         <div class="contact">
-          <form class="contact-form reveal" id="contactForm" novalidate>
+          <form class="contact-form reveal" id="contactForm" novalidate
+                aria-labelledby="contacto-titulo">
             <div class="field">
-              <label for="nombre">Nombre y apellidos <span aria-hidden="true">*</span></label>
-              <input type="text" id="nombre" name="nombre" autocomplete="name" required>
-              <p class="error" data-error-for="nombre" role="alert"></p>
+              <label for="nombre">Nombre y apellidos <span aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-required="true" aria-describedby="error-nombre">
+              <p class="error" id="error-nombre" data-error-for="nombre" role="alert"></p>
             </div>
 
             <div class="field-row">
               <div class="field">
-                <label for="email">Email <span aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-                <p class="error" data-error-for="email" role="alert"></p>
+                <label for="email">Email <span aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="error-email">
+                <p class="error" id="error-email" data-error-for="email" role="alert"></p>
               </div>
               <div class="field">
                 <label for="telefono">Teléfono <small>(opcional)</small></label>
-                <input type="tel" id="telefono" name="telefono" autocomplete="tel">
-                <p class="error" data-error-for="telefono" role="alert"></p>
+                <input type="tel" id="telefono" name="telefono" autocomplete="tel" aria-describedby="error-telefono">
+                <p class="error" id="error-telefono" data-error-for="telefono" role="alert"></p>
               </div>
             </div>
 
             <div class="field-row">
               <div class="field">
-                <label for="servicio">Servicio de interés <span aria-hidden="true">*</span></label>
-                <select id="servicio" name="servicio" required>
+                <label for="servicio">Servicio de interés <span aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></label>
+                <select id="servicio" name="servicio" required aria-required="true" aria-describedby="error-servicio">
                   <option value="">Selecciona una opción…</option>
                   <option>Consulta gratuita de 30 min</option>
                   <option>Diagnóstico financiero</option>
@@ -319,7 +321,7 @@
                   <option>Acompañamiento continuo</option>
                   <option>Otro / No lo sé todavía</option>
                 </select>
-                <p class="error" data-error-for="servicio" role="alert"></p>
+                <p class="error" id="error-servicio" data-error-for="servicio" role="alert"></p>
               </div>
               <div class="field">
                 <label for="contacto-pref">Prefiero que me contactes por</label>
@@ -348,20 +350,21 @@
             </div>
 
             <div class="field">
-              <label for="mensaje">Cuéntame tu situación <span aria-hidden="true">*</span></label>
-              <textarea id="mensaje" name="mensaje" rows="5" required
+              <label for="mensaje">Cuéntame tu situación <span aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></label>
+              <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" aria-describedby="error-mensaje"
                 placeholder="Por ejemplo: quiero ordenar mis finanzas y empezar a invertir a largo plazo, pero no sé por dónde empezar."></textarea>
-              <p class="error" data-error-for="mensaje" role="alert"></p>
+              <p class="error" id="error-mensaje" data-error-for="mensaje" role="alert"></p>
             </div>
 
             <div class="field field-check">
               <label class="check">
-                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <input type="checkbox" id="privacidad" name="privacidad" required aria-required="true" aria-describedby="error-privacidad">
                 <span>He leído y acepto la
-                  <button type="button" class="link-btn" data-open-policy>política de tratamiento de datos</button>
-                  y el uso de mis datos para responder a esta solicitud. <span aria-hidden="true">*</span></span>
+                  <button type="button" class="link-btn" data-open-policy
+                          aria-label="Leer la política de tratamiento de datos">política de tratamiento de datos</button>
+                  y el uso de mis datos para responder a esta solicitud. <span aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></span>
               </label>
-              <p class="error" data-error-for="privacidad" role="alert"></p>
+              <p class="error" id="error-privacidad" data-error-for="privacidad" role="alert"></p>
             </div>
 
             <!-- Trampa antispam: invisible para las personas, tentadora para los robots. -->
@@ -374,10 +377,10 @@
             <p class="form-note" id="formStatus" role="status" aria-live="polite"></p>
           </form>
 
-          <aside class="contact-side reveal">
+          <aside class="contact-side reveal" aria-label="Cómo funciona y horario de atención">
             <div class="contact-block">
               <h3>Cómo funciona</h3>
-              <ol class="contact-steps">
+              <ol role="list" class="contact-steps">
                 <li>Envías el formulario con tu situación.</li>
                 <li>Te respondo en menos de 24 h laborables.</li>
                 <li>Agendamos la llamada gratuita de 30 minutos.</li>
@@ -386,7 +389,7 @@
 
             <div class="contact-block">
               <h3>Horario de atención</h3>
-              <ul class="contact-list plain">
+              <ul role="list" class="contact-list plain">
                 <li><span>Lunes a jueves</span><span>9:00 – 19:00</span></li>
                 <li><span>Viernes</span><span>9:00 – 14:00</span></li>
                 <li><span>Fin de semana</span><span>Cerrado</span></li>
@@ -411,7 +414,8 @@
         <a href="#proceso">Cómo trabajo</a>
         <a href="#faq">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>
-        <button type="button" class="link-btn footer-policy" data-open-policy>Política de tratamiento de datos</button>
+        <button type="button" class="link-btn footer-policy" data-open-policy
+                aria-label="Leer la política de tratamiento de datos">Política de tratamiento de datos</button>
       </nav>
 
       <div class="footer-legal">
@@ -426,7 +430,8 @@
           <strong>Protección de datos.</strong> Los datos facilitados a través del
           formulario se tratan con la única finalidad de atender tu solicitud y no se
           ceden a terceros con fines comerciales. Consulta el detalle completo en la
-          <button type="button" class="link-btn" data-open-policy>política de tratamiento de datos</button>.
+          <button type="button" class="link-btn" data-open-policy
+            aria-label="Leer la política de tratamiento de datos">política de tratamiento de datos</button>.
         </p>
       </div>
 
@@ -465,7 +470,7 @@
 
         <h3>2. Qué datos recojo</h3>
         <p>Únicamente los que tú me facilitas en el formulario:</p>
-        <ul>
+        <ul role="list">
           <li>Nombre y apellidos.</li>
           <li>Dirección de correo electrónico.</li>
           <li>Teléfono, si decides indicarlo (es un campo opcional).</li>
@@ -496,7 +501,7 @@
         </p>
 
         <h3>5. Cuánto tiempo los conservo</h3>
-        <ul>
+        <ul role="list">
           <li>
             <strong>Si no llegamos a trabajar juntos:</strong> conservo tu solicitud un
             máximo de <strong>12 meses</strong> desde el último contacto, y después la
@@ -520,7 +525,7 @@
 
         <h3>7. Tus derechos</h3>
         <p>Puedes ejercer en cualquier momento y de forma gratuita tu derecho a:</p>
-        <ul>
+        <ul role="list">
           <li><strong>Acceder</strong> a los datos que tengo sobre ti.</li>
           <li><strong>Rectificar</strong> los que sean inexactos.</li>
           <li><strong>Suprimir</strong> los datos («derecho al olvido»).</li>

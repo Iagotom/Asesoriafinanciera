@@ -109,16 +109,44 @@ Definida como variables CSS al inicio de `assets/styles.css`:
 
 Cambiar cualquiera de estos valores actualiza toda la web.
 
+## Accesibilidad
+
+La web está preparada para lectores de pantalla y navegación por teclado, y
+**supera la auditoría de axe-core sin incumplimientos** en WCAG 2.1 AA en cuatro
+estados: página completa, política abierta, formulario con errores y móvil con el
+menú desplegado.
+
+Qué incluye concretamente:
+
+- **Dos atajos de teclado** al principio: al contenido y directo al formulario.
+- **Regiones con nombre** (`aria-labelledby`), para saltar entre secciones.
+- **Un solo `h1`** y jerarquía de encabezados sin saltos, que es el índice por el
+  que navega quien no ve la página.
+- **`role="list"` en todas las listas**: al quitar los puntos con CSS, VoiceOver
+  deja de anunciarlas como listas, y el role lo devuelve.
+- **Botones con nombre propio**: los cuatro «Contratar» se anuncian como
+  «Contratar: Plan financiero personal», etc., en lugar de cuatro nombres
+  idénticos.
+- **Formulario**: cada campo con etiqueta asociada, los obligatorios anunciados
+  como tal (`aria-required` y texto audible), y cada mensaje de error vinculado a
+  su campo (`aria-describedby`) y con `role="alert"` para que se lea al aparecer.
+- **Al enviar vacío** se anuncia cuántos campos faltan y el foco salta al primero.
+- **Al pulsar «Contratar»** se anuncia qué servicio se ha seleccionado, para que
+  el salto de foco al formulario no resulte desconcertante.
+- **La política** se abre en un `<dialog>` nativo: atrapa el foco, se cierra con
+  Escape y devuelve el foco al botón que la abrió.
+- **Contraste comprobado**: 12,5:1 en titulares y 6,4:1 en el cuerpo sobre el
+  beige. El gris del texto pequeño se oscureció a `#6F5760` para superar el 4,5:1.
+
 ## Notas
 
-- Responsive, accesible (navegación por teclado, `aria-*`, texto alternativo) y
-  con **modo oscuro automático** según las preferencias del sistema.
+- Diseño adaptable a móvil, tableta y escritorio.
+- **Sin tema oscuro a propósito**: la web usa siempre la paleta de marca, porque
+  el beige es parte de la identidad. `color-scheme: light` evita además que el
+  navegador oscurezca por su cuenta los campos del formulario.
 - Respeta `prefers-reduced-motion`.
 - Los textos de servicios, precios («Sesión única», «Proyecto cerrado») y el
   horario de atención son propuestas: ajústalos a tu oferta real en `index.html`.
-- El tema oscuro se resuelve **solo con variables CSS**, por lo que respeta tanto
-  la preferencia del sistema como un `data-theme="dark"` o `"light"` explícito en
-  la etiqueta raíz.
 - El pie incluye un **aviso legal** y un botón que abre la política de
   tratamiento de datos completa. Conviene que un profesional los revise antes de
   publicar y añadir los datos fiscales que exija la normativa aplicable.

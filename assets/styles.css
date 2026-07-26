@@ -1,8 +1,12 @@
 /* =========================================================
-   Asesoría Financiera — hoja de estilos
-   Paleta de marca: granate + beige
+   IT Asesor Financiero — hoja de estilos
+   Paleta de marca: granate + beige + dorado
    Cambia los valores de --brand-* y el resto de la web se
    actualiza automáticamente.
+
+   La web usa siempre la paleta de marca: no cambia a tema
+   oscuro según el dispositivo, porque el beige es parte de
+   la identidad.
    ========================================================= */
 
 :root {
@@ -25,7 +29,9 @@
   --surface-alt: var(--brand-cream);
   --ink: #2B161E;
   --ink-soft: #5D454E;
-  --ink-muted: #7E646D;
+  /* Oscurecido respecto al beige de fondo: el texto pequeño necesita 4.5:1
+     y con el gris anterior se quedaba en 3.94. */
+  --ink-muted: #6F5760;
   --line: rgba(109, 34, 53, 0.14);
   --line-strong: rgba(109, 34, 53, 0.30);
   --primary: var(--brand-granate);
@@ -59,73 +65,16 @@
   --section-y: clamp(4rem, 9vw, 7.5rem);
 }
 
-/* Tema oscuro: se aplica por preferencia del sistema y, de forma explícita,
-   cuando el visor marca data-theme. Todo pasa por tokens, de modo que el
-   interruptor de tema funciona en ambos sentidos. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1C0E14;
-    --bg-alt: #24131A;
-    --surface: #2C1820;
-    --surface-alt: #341C25;
-    --ink: var(--brand-beige-light);
-    --ink-soft: #D8C6B6;
-    --ink-muted: #B29C9F;
-    --line: rgba(232, 220, 200, 0.14);
-    --line-strong: rgba(232, 220, 200, 0.26);
-    --primary: var(--brand-granate-light);
-    --primary-hover: #A24A60;
-    --on-primary: var(--brand-cream);
-    --accent: var(--brand-gold-light);
-    --focus-ring: var(--brand-gold-light);
-    --accent-text: var(--brand-gold-light);
-    --btn-outline-fg: var(--brand-beige-light);
-    --badge-bg: rgba(140, 58, 79, .30);
-    --badge-fg: var(--brand-beige);
-    --band-bg: var(--brand-granate-deep);
-    --band-fg: var(--brand-beige-light);
-    --hero-glow: rgba(140, 58, 79, .22);
-    --danger: #F09080;
-    --success: #6FD39B;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
-    --shadow-md: 0 6px 18px rgba(0, 0, 0, .35);
-    --shadow-lg: 0 16px 44px rgba(0, 0, 0, .45);
-  }
-}
-
-:root[data-theme="dark"] {
-    --bg: #1C0E14;
-    --bg-alt: #24131A;
-    --surface: #2C1820;
-    --surface-alt: #341C25;
-    --ink: var(--brand-beige-light);
-    --ink-soft: #D8C6B6;
-    --ink-muted: #B29C9F;
-    --line: rgba(232, 220, 200, 0.14);
-    --line-strong: rgba(232, 220, 200, 0.26);
-    --primary: var(--brand-granate-light);
-    --primary-hover: #A24A60;
-    --on-primary: var(--brand-cream);
-    --accent: var(--brand-gold-light);
-    --focus-ring: var(--brand-gold-light);
-    --accent-text: var(--brand-gold-light);
-    --btn-outline-fg: var(--brand-beige-light);
-    --badge-bg: rgba(140, 58, 79, .30);
-    --badge-fg: var(--brand-beige);
-    --band-bg: var(--brand-granate-deep);
-    --band-fg: var(--brand-beige-light);
-    --hero-glow: rgba(140, 58, 79, .22);
-    --danger: #F09080;
-    --success: #6FD39B;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
-    --shadow-md: 0 6px 18px rgba(0, 0, 0, .35);
-    --shadow-lg: 0 16px 44px rgba(0, 0, 0, .45);
-}
-
 /* ---------- Reset / base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  /* La web sólo tiene paleta clara: así el navegador no oscurece por su
+     cuenta los controles de formulario ni las barras de desplazamiento. */
+  color-scheme: light;
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -167,6 +116,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   outline-offset: 3px;
   border-radius: 4px;
 }
+/* Texto sólo para lectores de pantalla: invisible, pero anunciado. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Atajos de teclado: ocultos hasta recibir el foco. */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -176,9 +139,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--on-primary);
   padding: .7rem 1.1rem;
   border-radius: var(--radius-sm);
+  font-weight: 600;
   text-decoration: none;
 }
 .skip-link:focus { left: .75rem; }
+.skip-link:nth-of-type(2):focus { left: 15rem; }
 
 /* ---------- Layout ---------- */
 .container {
