@@ -82,9 +82,13 @@ def construir(fragmento: bool) -> str:
         (RAIZ / "assets/favicon.svg").read_bytes()
     ).decode("ascii")
 
+    # El bloqueo a buscadores debe viajar con la copia: también se publica.
+    robots = re.search(r'<meta name="robots" content="([^"]*)"', html, re.I)
+
     cabecera = "\n".join([
         f"<title>{titulo}</title>",
         f'<meta name="description" content="{descripcion}">',
+        *([f'<meta name="robots" content="{robots.group(1)}">'] if robots else []),
         f'<link rel="icon" href="data:image/svg+xml;base64,{favicon}">',
         '<script>document.documentElement.classList.add("js");</script>',
         f"<style>\n{css}\n</style>",
