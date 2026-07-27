@@ -48,13 +48,13 @@ En `index.html`, buscables con `grep -n "HUECO" index.html`:
 
 ### La fotografía
 
-Ahora hay una imagen de relleno. Para poner la tuya:
+Está en `assets/img/foto.jpg`: 920 × 920 px, cuadrada, 89 KB y **sin metadatos
+EXIF** (las fotos de móvil pueden llevar coordenadas GPS incrustadas).
 
-1. Guarda tu foto en `assets/img/foto.jpg` (vertical, proporción 5:6, unos
-   1000 × 1200 px va sobrado).
-2. En `index.html`, cambia el `src` a `assets/img/foto.jpg`.
-3. Ajusta el `alt` si quieres describirla mejor. El `alt` no es decorativo: es
-   lo que oye quien no puede ver la imagen.
+Para cambiarla, sustituye el archivo por otro cuadrado. Si la nueva no fuese
+cuadrada, ajusta también el `aspect-ratio` de `.perfil-foto img` en
+`assets/styles.css`, para que el marco siga la proporción de la foto en lugar
+de recortarla.
 
 ## Opiniones de clientes
 

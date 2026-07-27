@@ -584,7 +584,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 5 / 6;
+  /* Cuadrada: es la proporción de la fotografía, así no se recorta nada. */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--radius-lg);
   background: var(--bg-alt);
