@@ -47,6 +47,11 @@ jobs:
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5
+        with:
+          # Activa Pages en el repositorio si aún no lo está, en lugar de
+          # fallar con "Get Pages site failed / Not Found". Evita tener que
+          # entrar a Settings → Pages a mano.
+          enablement: true
 
       - name: Subir los archivos
         uses: actions/upload-pages-artifact@v3
