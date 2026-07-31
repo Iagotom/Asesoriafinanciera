@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Núcleo Asesoría Financiera — Planificación patrimonial independiente</title>
+  <meta name="description" content="Asesoría financiera independiente: planificación patrimonial, inversión, jubilación y fiscalidad. Primera consulta gratuita y sin compromiso.">
+  <meta name="theme-color" content="#0d1b2a">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Núcleo Asesoría Financiera">
+  <meta property="og:description" content="Planificación patrimonial independiente. Sin comisiones ocultas, sin productos propios.">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Aplica el tema guardado antes del primer pintado para evitar parpadeo. -->
+  <script>
+    try {
+      var t = localStorage.getItem('nucleo-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d1b2a'/><path d='M25 68 L43 44 L57 58 L76 30' fill='none' stroke='%23c9a227' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Núcleo Asesoría Financiera, inicio">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" rx="22"/>
+          <path d="M25 68 L43 44 L57 58 L76 30" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">Núcleo<span class="brand-text-light">Asesoría</span></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+          <li class="nav-cta"><a class="btn btn-primary btn-sm" href="#contacto">Reservar consulta</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú de navegación">
+          <span class="burger"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Asesoramiento independiente · Solo honorarios</p>
+          <h1>Decisiones financieras que resisten el paso del tiempo</h1>
+          <p class="lead">
+            Diseñamos y acompañamos tu plan patrimonial completo: inversión, jubilación,
+            fiscalidad y protección familiar. Sin productos propios, sin comisiones ocultas
+            y con un único incentivo: que tu patrimonio crezca.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Reservar consulta gratuita</a>
+            <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+          </div>
+          <ul class="hero-badges">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              Primera sesión sin coste
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              Modelo <em>fee-only</em>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              Respuesta en 24 h
+            </li>
+          </ul>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen de resultados">
+          <div class="hero-card-head">
+            <span class="hero-card-title">Plan patrimonial</span>
+            <span class="tag tag-positive">Actualizado</span>
+          </div>
+
+          <div class="metric">
+            <span class="metric-label">Patrimonio proyectado a 20 años</span>
+            <span class="metric-value" data-count="428500" data-prefix="" data-suffix=" €">0 €</span>
+            <span class="metric-delta">+6,2 % anualizado estimado</span>
+          </div>
+
+          <div class="chart" role="img" aria-label="Gráfico de crecimiento patrimonial proyectado a veinte años">
+            <svg viewBox="0 0 320 130" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" class="grad-top"/>
+                  <stop offset="100%" class="grad-bottom"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area" d="M0,120 C40,112 70,104 105,92 C140,80 165,70 200,52 C235,34 270,26 320,10 L320,130 L0,130 Z" fill="url(#areaGrad)"/>
+              <path class="chart-line" d="M0,120 C40,112 70,104 105,92 C140,80 165,70 200,52 C235,34 270,26 320,10"/>
+            </svg>
+          </div>
+
+          <dl class="hero-stats">
+            <div><dt>Aportación mensual</dt><dd>500 €</dd></div>
+            <div><dt>Horizonte</dt><dd>20 años</dd></div>
+            <div><dt>Coste medio cartera</dt><dd>0,22 %</dd></div>
+          </dl>
+          <p class="disclaimer-inline">Escenario ilustrativo. Rentabilidades pasadas no garantizan resultados futuros.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TRUST STRIP ============ -->
+    <section class="strip" aria-label="Cifras destacadas">
+      <div class="container strip-inner">
+        <div class="strip-item"><span class="strip-num" data-count="240" data-suffix="+">0</span><span class="strip-label">Familias asesoradas</span></div>
+        <div class="strip-item"><span class="strip-num" data-count="85" data-suffix=" M€">0</span><span class="strip-label">Patrimonio bajo seguimiento</span></div>
+        <div class="strip-item"><span class="strip-num" data-count="14" data-suffix=" años">0</span><span class="strip-label">De experiencia</span></div>
+        <div class="strip-item"><span class="strip-num" data-count="0" data-suffix=" €">0</span><span class="strip-label">En retrocesiones cobradas</span></div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Servicios</p>
+          <h2>Un plan para cada etapa de tu vida financiera</h2>
+          <p class="section-sub">
+            Trabajamos por objetivos concretos y medibles. Puedes contratar un servicio suelto
+            o el acompañamiento completo.
+          </p>
+        </header>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg>
+            </div>
+            <h3>Planificación de inversiones</h3>
+            <p>Cartera indexada y diversificada según tu perfil de riesgo, horizonte y capacidad de ahorro. Revisión y rebalanceo periódicos.</p>
+            <ul class="card-list">
+              <li>Análisis de perfil y objetivos</li>
+              <li>Selección de vehículos de bajo coste</li>
+              <li>Rebalanceo anual documentado</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M17 7.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2.2 2.7 5 3.3 5 1.4 5 3.2-2.2 3-5 3-5-1.1-5-3"/></svg>
+            </div>
+            <h3>Jubilación y rentas</h3>
+            <p>Cuánto necesitas, cuándo puedes dejar de trabajar y de qué forma retirar el capital pagando lo mínimo en impuestos.</p>
+            <ul class="card-list">
+              <li>Proyección de pensión pública</li>
+              <li>Estrategia de descapitalización</li>
+              <li>Planes de empleo y aportaciones</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.9-8 9-4.8-1.1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Protección familiar</h3>
+            <p>Dimensionamos coberturas de vida, incapacidad y salud para que un imprevisto no arruine décadas de planificación.</p>
+            <ul class="card-list">
+              <li>Auditoría de pólizas actuales</li>
+              <li>Cálculo de capital necesario</li>
+              <li>Comparativa entre aseguradoras</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+            </div>
+            <h3>Optimización fiscal</h3>
+            <p>Estructuramos tus inversiones y tu renta para reducir la factura fiscal dentro del marco legal, año a año.</p>
+            <ul class="card-list">
+              <li>Compensación de pérdidas</li>
+              <li>Diferimiento vía traspasos</li>
+              <li>Deducciones autonómicas</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg>
+            </div>
+            <h3>Vivienda e hipoteca</h3>
+            <p>Comprar o alquilar, fijo o variable, amortizar o invertir. Números claros antes de la decisión más cara de tu vida.</p>
+            <ul class="card-list">
+              <li>Comparativa compra vs. alquiler</li>
+              <li>Análisis de amortización anticipada</li>
+              <li>Negociación de condiciones</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M17 10.5h4M19 8.5v4"/></svg>
+            </div>
+            <h3>Sucesión y herencias</h3>
+            <p>Planificamos la transmisión del patrimonio para minimizar conflictos e impuestos entre generaciones.</p>
+            <ul class="card-list">
+              <li>Mapa patrimonial familiar</li>
+              <li>Donaciones en vida</li>
+              <li>Coordinación con notaría</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESO ============ -->
+    <section class="section section-alt" id="proceso">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Cómo trabajamos</p>
+          <h2>Cuatro pasos, cero letra pequeña</h2>
+          <p class="section-sub">Del primer café al plan en marcha, normalmente en menos de un mes.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Diagnóstico inicial</h3>
+            <p>Sesión de 45 minutos sin coste. Revisamos tu situación, tus objetivos y vemos si podemos ayudarte de verdad.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Análisis del patrimonio</h3>
+            <p>Recopilamos ingresos, deudas, inversiones y coberturas. Detectamos costes ocultos, duplicidades y riesgos.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Plan por escrito</h3>
+            <p>Recibes un documento con recomendaciones concretas, prioridades, calendario y coste estimado de cada acción.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">04</span>
+            <h3>Ejecución y seguimiento</h3>
+            <p>Te acompañamos en la implementación y revisamos el plan cada semestre, ajustándolo a los cambios de tu vida.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CALCULADORA ============ -->
+    <section class="section" id="calculadora">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Herramienta</p>
+          <h2>Calculadora de interés compuesto</h2>
+          <p class="section-sub">
+            Ajusta los valores y observa cómo el tiempo hace la mayor parte del trabajo.
+          </p>
+        </header>
+
+        <div class="calc">
+          <form class="calc-controls" id="calc-form" novalidate>
+            <div class="field">
+              <label for="calc-initial">Capital inicial</label>
+              <div class="input-wrap">
+                <input type="number" id="calc-initial" name="initial" value="10000" min="0" max="10000000" step="500" inputmode="numeric">
+                <span class="input-suffix">€</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="calc-monthly">Aportación mensual</label>
+              <div class="input-wrap">
+                <input type="number" id="calc-monthly" name="monthly" value="500" min="0" max="100000" step="50" inputmode="numeric">
+                <span class="input-suffix">€</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="calc-years">Horizonte temporal <output class="field-output" id="out-years">20 años</output></label>
+              <input type="range" id="calc-years" name="years" value="20" min="1" max="40" step="1">
+            </div>
+
+            <div class="field">
+              <label for="calc-rate">Rentabilidad anual estimada <output class="field-output" id="out-rate">6,0 %</output></label>
+              <input type="range" id="calc-rate" name="rate" value="6" min="0" max="12" step="0.1">
+            </div>
+          </form>
+
+          <div class="calc-results" aria-live="polite">
+            <div class="calc-total">
+              <span class="calc-total-label">Capital final estimado</span>
+              <strong class="calc-total-value" id="calc-total">—</strong>
+            </div>
+
+            <div class="calc-bars">
+              <div class="calc-bar">
+                <div class="calc-bar-head">
+                  <span>Lo que aportas tú</span>
+                  <strong id="calc-contrib">—</strong>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-contrib" id="bar-contrib"></div></div>
+              </div>
+              <div class="calc-bar">
+                <div class="calc-bar-head">
+                  <span>Lo que generan los intereses</span>
+                  <strong id="calc-interest">—</strong>
+                </div>
+                <div class="bar-track"><div class="bar-fill bar-interest" id="bar-interest"></div></div>
+              </div>
+            </div>
+
+            <p class="disclaimer-inline">
+              Cálculo con capitalización mensual y aportaciones a principio de mes. No incluye
+              inflación, comisiones ni impuestos. Fines exclusivamente informativos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section class="section section-alt" id="nosotros">
+      <div class="container about">
+        <div class="about-copy">
+          <p class="eyebrow">Quiénes somos</p>
+          <h2>Asesores, no vendedores</h2>
+          <p>
+            Núcleo nace de una idea simple: en España casi todo el asesoramiento financiero
+            está pagado por quien fabrica el producto, no por quien lo compra. Eso genera un
+            conflicto de interés que el cliente acaba pagando en comisiones.
+          </p>
+          <p>
+            Nosotros cobramos exclusivamente de nuestros clientes, mediante honorarios cerrados
+            y conocidos de antemano. No recibimos retrocesiones de bancos, gestoras ni
+            aseguradoras. Si una recomendación no te conviene, no tenemos ningún incentivo
+            para hacerla.
+          </p>
+
+          <ul class="values">
+            <li>
+              <h3>Transparencia total</h3>
+              <p>Conoces el coste exacto del servicio antes de contratarlo. Sin porcentajes sobre patrimonio.</p>
+            </li>
+            <li>
+              <h3>Evidencia, no intuición</h3>
+              <p>Trabajamos con datos, diversificación y costes bajos. Nada de predicciones de mercado.</p>
+            </li>
+            <li>
+              <h3>Largo plazo</h3>
+              <p>Nuestro éxito se mide en décadas, no en la rentabilidad de un trimestre concreto.</p>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="about-quote">
+          <blockquote>
+            «Llevábamos años pagando comisiones que ni sabíamos que existían. En dos reuniones
+            teníamos un plan claro, más barato y, por fin, entendible.»
+          </blockquote>
+          <figcaption>
+            <span class="avatar" aria-hidden="true">MR</span>
+            <span>
+              <strong>Marta R.</strong>
+              <em>Cliente desde 2021 · Valencia</em>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container narrow">
+        <header class="section-head">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2>Lo que suelen preguntarnos</h2>
+        </header>
+
+        <div class="faq">
+          <details class="faq-item">
+            <summary>¿Cuánto cuesta el servicio?</summary>
+            <div class="faq-body">
+              <p>
+                El plan patrimonial completo parte de 950 € (pago único) e incluye el análisis,
+                el documento de recomendaciones y dos sesiones de seguimiento. El acompañamiento
+                continuo tiene una cuota anual desde 1.200 €. Siempre sabrás el importe antes de
+                contratar.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Necesito un patrimonio mínimo?</summary>
+            <div class="faq-body">
+              <p>
+                No. Trabajamos tanto con personas que empiezan a ahorrar como con patrimonios
+                consolidados. Lo que sí pedimos es capacidad de ahorro estable o un capital ya
+                formado: sin uno de los dos, el asesoramiento aporta poco valor.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Gestionáis vosotros mi dinero?</summary>
+            <div class="faq-body">
+              <p>
+                No. Tu dinero permanece siempre en tus cuentas y a tu nombre. Nosotros te
+                indicamos qué hacer y te acompañamos, pero nunca tenemos acceso ni capacidad
+                de disposición sobre tus fondos.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Y si ya tengo un banco o un gestor?</summary>
+            <div class="faq-body">
+              <p>
+                Perfecto. Muchos clientes llegan con productos ya contratados. Los auditamos,
+                te explicamos qué estás pagando realmente y decidimos juntos qué mantener,
+                qué traspasar y qué cancelar.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Las sesiones son presenciales u online?</summary>
+            <div class="faq-body">
+              <p>
+                Como prefieras. Atendemos presencialmente en Valencia y por videollamada en
+                el resto de España. El proceso y los honorarios son idénticos en ambos casos.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section section-contact" id="contacto">
+      <div class="container contact">
+        <div class="contact-copy">
+          <p class="eyebrow">Contacto</p>
+          <h2>Hablemos 45 minutos, sin coste</h2>
+          <p>
+            Cuéntanos brevemente tu situación y te proponemos dos horarios para la primera
+            sesión. Si vemos que no podemos ayudarte, te lo diremos en la misma llamada.
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 6l8 6 8-6"/></svg>
+              <a href="mailto:hola@nucleoasesoria.es">hola@nucleoasesoria.es</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 014 5a2 2 0 012-2z"/></svg>
+              <a href="tel:+34960000000">+34 960 00 00 00</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <span>Valencia · y online en toda España</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+              <span>Lunes a viernes, 9:00 – 19:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Nombre y apellidos</label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="err-name">
+            <p class="error" id="err-name" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="err-email">
+            <p class="error" id="err-email" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Teléfono <span class="optional">(opcional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="err-phone">
+            <p class="error" id="err-phone" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="topic">¿En qué podemos ayudarte?</label>
+            <select id="topic" name="topic">
+              <option value="inversiones">Planificación de inversiones</option>
+              <option value="jubilacion">Jubilación y rentas</option>
+              <option value="proteccion">Protección familiar</option>
+              <option value="fiscalidad">Optimización fiscal</option>
+              <option value="vivienda">Vivienda e hipoteca</option>
+              <option value="sucesion">Sucesión y herencias</option>
+              <option value="otro">Otro / no lo tengo claro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required aria-describedby="err-message" placeholder="Cuéntanos en dos líneas tu situación y qué te gustaría resolver."></textarea>
+            <p class="error" id="err-message" hidden></p>
+          </div>
+
+          <div class="field field-check">
+            <input type="checkbox" id="privacy" name="privacy" required aria-describedby="err-privacy">
+            <label for="privacy">He leído y acepto la <a href="#privacidad">política de privacidad</a>.</label>
+            <p class="error" id="err-privacy" hidden></p>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Solicitar consulta gratuita</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio">
+          <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="22"/>
+            <path d="M25 68 L43 44 L57 58 L76 30" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand-text">Núcleo<span class="brand-text-light">Asesoría</span></span>
+        </a>
+        <p>Asesoramiento financiero independiente bajo modelo de solo honorarios.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Enlaces del pie de página">
+        <div>
+          <h3>Servicios</h3>
+          <ul>
+            <li><a href="#servicios">Inversiones</a></li>
+            <li><a href="#servicios">Jubilación</a></li>
+            <li><a href="#servicios">Fiscalidad</a></li>
+            <li><a href="#servicios">Sucesión</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Compañía</h3>
+          <ul>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#aviso-legal">Aviso legal</a></li>
+            <li><a href="#privacidad">Privacidad</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> Núcleo Asesoría Financiera. Todos los derechos reservados.</p>
+      <p class="disclaimer">
+        La información de esta web tiene carácter divulgativo y no constituye una recomendación
+        personalizada de inversión. Toda inversión conlleva riesgo de pérdida del capital.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
